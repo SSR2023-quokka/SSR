@@ -1,5 +1,4 @@
 #include <PS4Operation.hpp>
-#include <PS4Controller.h>
 
 void PS4Operation() {
   if (PS4.isConnected()) {
