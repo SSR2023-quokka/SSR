@@ -49,9 +49,8 @@ void PS4Operation() {
       Serial.printf("Right Stick y at %d\n", PS4.RStickY());
     }
 
-    if (PS4.Charging()) Serial.println("The controller is charging");
-    if (PS4.Audio()) Serial.println("The controller has headphones attached");
-    if (PS4.Mic()) Serial.println("The controller has a mic attached");
+    double PS4LStickDistance = sqrt(pow(PS4.LStickX(), 2) + pow(PS4.LStickY(), 2));
+    if (PS4LStickDistance > 70) Serial.printf("ON\n");
 
     Serial.printf("Battery Level : %d\n", PS4.Battery());
 
