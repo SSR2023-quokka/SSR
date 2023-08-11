@@ -50,8 +50,12 @@ if (PS4.isConnected()) {
     if (PS4LStickDistance > 70) {
       printf("v1 = %d, v2 = %d, v3 = %d\n", v1, v2, v3);
 
+      moterRun1(v1);
+      moterRun2(v2);
       moterRun3(v3);
     } else {
+      moterRun1(0);
+      moterRun2(0);
       moterRun3(0);
     }
   }
