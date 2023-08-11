@@ -64,17 +64,13 @@ if (PS4.isConnected()) {
 void moterRun1(int v) {
   int i = 128 - v;
   digitalWrite(pwm3, HIGH);
-  ledcWrite(pwmch3, 1);
+  ledcWrite(pwmch3, i);
 }
 
 void moterRun2(int v) {
-  if (v >= 0) {
-    ledcWrite(pwmch2, v);
-    digitalWrite(dir2, HIGH); 
-  } else {
-    ledcWrite(pwmch2, -v);
-    digitalWrite(dir2, LOW); 
-  }
+  int i = 128 - v;
+  digitalWrite(pwm3, HIGH);
+  ledcWrite(pwmch3, i);
 }
 
 void moterRun3(int v) {
