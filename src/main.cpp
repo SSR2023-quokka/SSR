@@ -1,5 +1,5 @@
 #include <PS4Controller.h>
-#include <Motor.hpp>
+#include "Motor.hpp"
 
 Motor motor1{0, 0, 0};  //ピンは適当
 Motor motor2{1, 1, 1};
