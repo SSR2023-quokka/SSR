@@ -1,5 +1,15 @@
 #include <MoterRun.hpp>
 
+    int dir1 = 0;
+    int pwm1 = 0;
+    int dirch1 = 0;
+    int dir2 = 1; 
+    int pwm2 = 1;
+    int dirch2 = 1;
+    int dir3 = 2;
+    int pwm3 = 2;
+    int dirch3 = 2;
+
 AnalogOut analogMoter1{dir1, dirch1, 20000, 8};
 AnalogOut analogMoter2{dir2, dirch2, 20000, 8};
 AnalogOut analogMoter3{dir3, dirch3, 20000, 8};
