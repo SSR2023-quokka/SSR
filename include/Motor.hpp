@@ -8,5 +8,5 @@ struct Motor {
     int dirch;
 
     void setup();
-    void motorRun(int i);
+    void motorRun(int v);
 };
