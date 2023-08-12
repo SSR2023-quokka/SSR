@@ -5,20 +5,20 @@
 
 int dir1;
 int pwm1;
-int pwmch1 = 0;
+int dirch1 = 0;
 int dir2; 
 int pwm2;
-int pwmch2 = 1;
+int dirch2 = 1;
 int dir3 = 4;
 int pwm3 = 0;
-int pwmch3 = 2;
+int dirch3 = 2;
 
 
-AnalogOut Amoter1{pwm1, pwmch1, 20000, 8};
-AnalogOut Amoter2{pwm2, pwmch2, 20000, 8};
-AnalogOut Amoter3{dir3, pwmch3, 20000, 8};
-DigitalOut Dmoter1{dir1};
-DigitalOut Dmoter2{dir2};
+AnalogOut Amoter1{dir1, dirch1, 20000, 8};
+AnalogOut Amoter2{dir2, dirch2, 20000, 8};
+AnalogOut Amoter3{dir3, dirch3, 20000, 8};
+DigitalOut Dmoter1{pwm1};
+DigitalOut Dmoter2{pwm2};
 DigitalOut Dmoter3{pwm3};
 
 void moterRun1(int v);
@@ -64,17 +64,17 @@ if (PS4.isConnected()) {
 void moterRun1(int v) {
   int i = 128 - v;
   digitalWrite(pwm3, HIGH);
-  ledcWrite(pwmch3, i);
+  ledcWrite(dirch3, i);
 }
 
 void moterRun2(int v) {
   int i = 128 - v;
   digitalWrite(pwm3, HIGH);
-  ledcWrite(pwmch3, i);
+  ledcWrite(dirch3, i);
 }
 
 void moterRun3(int v) {
   int i = 128 - v;
   digitalWrite(pwm3, HIGH);
-  ledcWrite(pwmch3, i);
+  ledcWrite(dirch3, i);
 }
