@@ -1,6 +1,6 @@
 #include <Arduino.h>
-#include <AnalogOut.hpp>
-#include <DigitalOut.hpp>
+#include "AnalogOut.hpp"
+#include "DigitalOut.hpp"
 
 struct Motor {
     int pwm;
