@@ -13,7 +13,6 @@ int dir3 = 4;
 int pwm3 = 0;
 int dirch3 = 2;
 
-
 AnalogOut Amoter1{dir1, dirch1, 20000, 8};
 AnalogOut Amoter2{dir2, dirch2, 20000, 8};
 AnalogOut Amoter3{dir3, dirch3, 20000, 8};
