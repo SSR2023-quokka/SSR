@@ -1,4 +1,5 @@
-#include <moterRun.hpp>
+#include <MoterRun.hpp>
+
 
 AnalogOut analogMoter1{dir1, dirch1, 20000, 8};
 AnalogOut analogMoter2{dir2, dirch2, 20000, 8};
