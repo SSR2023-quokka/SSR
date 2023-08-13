@@ -1,5 +1,6 @@
 #include <PS4Controller.h>
 #include "Motor.hpp"
+// #include "LowerBody.hpp"
 
 Motor motor1{0, 0, 0};  //ピンは適当
 Motor motor2{1, 1, 1};
@@ -8,9 +9,11 @@ Motor motor3{2, 2, 2};
 void setup() {
     Serial.begin(9600);
     PS4.begin("b8:d6:1a:bc:e6:a2");
+    Serial.println("Ready.");
     motor1.setup();
     motor2.setup();
     motor3.setup();
+    // lowerBodySetup();
 }
 
 void loop() {
@@ -33,5 +36,6 @@ if (PS4.isConnected()) {
         motor2.motorRun(0);
         motor3.motorRun(0);
     }
+    // lowerBody();
   }
 }
