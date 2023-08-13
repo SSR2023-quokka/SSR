@@ -25,55 +25,54 @@ void moterRun2(int v);
 void moterRun3(int v);
 
 void setup() {
-  Serial.begin(9600);
-  PS4.begin("b8:d6:1a:bc:e6:a2");
-  Serial.println("Ready.");
+    Serial.begin(9600);
+    PS4.begin("b8:d6:1a:bc:e6:a2");
+    Serial.println("Ready.");
 
-  Amoter1.setup();
-  Amoter2.setup();
-  Amoter3.setup();
-  Dmoter1.setup();
-  Dmoter2.setup();
-  Dmoter3.setup();
+    Amoter1.setup();
+    Amoter2.setup();
+    Amoter3.setup();
+    Dmoter1.setup();
+    Dmoter2.setup();
+    Dmoter3.setup();
 }
 
 void loop() {
-if (PS4.isConnected()) {
-    double PS4LStickDistance = sqrt(pow(PS4.LStickX(), 2) + pow(PS4.LStickY(), 2));
-    double degree = atan2(PS4.LStickY(), PS4.LStickX());
-    double vx = cos(degree) * 32;
-    double vy = sin(degree) * 32;
-    int v1 = -vx / 2 + vy * sqrt(3) / 2;
-    int v2 = -vx / 2 - vy * sqrt(3) / 2;
-    int v3 = vx;
-    if (PS4LStickDistance > 70) {
-      printf("v1 = %d, v2 = %d, v3 = %d\n", v1, v2, v3);
-
-      moterRun1(v1);
-      moterRun2(v2);
-      moterRun3(v3);
-    } else {
-      moterRun1(0);
-      moterRun2(0);
-      moterRun3(0);
+    if (PS4.isConnected()) {
+        double PS4LStickDistance = sqrt(pow(PS4.LStickX(), 2) + pow(PS4.LStickY(), 2));
+        double degree = atan2(PS4.LStickY(), PS4.LStickX());
+        double vx = cos(degree) * 32;
+        double vy = sin(degree) * 32;
+        int v1 = -vx / 2 + vy * sqrt(3) / 2;
+        int v2 = -vx / 2 - vy * sqrt(3) / 2;
+        int v3 = vx;
+        if (PS4LStickDistance > 70) {
+            printf("v1 = %d, v2 = %d, v3 = %d\n", v1, v2, v3);
+            moterRun1(v1);
+            moterRun2(v2);
+            moterRun3(v3);
+        } else {
+            moterRun1(0);
+            moterRun2(0);
+            moterRun3(0);
+        }
     }
-  }
 }
 
 void moterRun1(int v) {
-  int i = 128 - v;
-  digitalWrite(pwm3, HIGH);
-  ledcWrite(dirch3, i);
+    int i = 128 - v;
+    digitalWrite(pwm3, HIGH);
+    ledcWrite(dirch3, i);
 }
 
 void moterRun2(int v) {
-  int i = 128 - v;
-  digitalWrite(pwm3, HIGH);
-  ledcWrite(dirch3, i);
+    int i = 128 - v;
+    digitalWrite(pwm3, HIGH);
+    ledcWrite(dirch3, i);
 }
 
 void moterRun3(int v) {
-  int i = 128 - v;
-  digitalWrite(pwm3, HIGH);
-  ledcWrite(dirch3, i);
+    int i = 128 - v;
+    digitalWrite(pwm3, HIGH);
+    ledcWrite(dirch3, i);
 }
