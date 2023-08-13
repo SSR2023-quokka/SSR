@@ -2,9 +2,9 @@
 #include "Motor.hpp"
 // #include "LowerBody.hpp"
 
-Motor motor1{0, 0, 0};  //ピンは適当
-Motor motor2{1, 1, 1};
-Motor motor3{2, 2, 2};
+Motor motor1{0, 0, 3};  //ピンは適当
+Motor motor2{1, 1, 4};
+Motor motor3{2, 2, 5};
 
 void setup() {
     Serial.begin(9600);
@@ -17,8 +17,7 @@ void setup() {
 }
 
 void loop() {
-    Serial.printf("1");
-if (PS4.isConnected()) {
+    if (PS4.isConnected()) {
     Serial.printf("2");
     double degree = atan2(PS4.LStickY(), PS4.LStickX());
     double vx = cos(degree) * 32;
@@ -40,5 +39,6 @@ if (PS4.isConnected()) {
         }
     // lowerBody();
     }
+    Serial.println("1");
     delay(1000);
 }
