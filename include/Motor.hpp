@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 #include "AnalogOut.hpp"
 #include "DigitalOut.hpp"
