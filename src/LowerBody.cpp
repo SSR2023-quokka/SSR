@@ -1,8 +1,8 @@
 // #include"LowerBody.hpp"
 
-// Motor motor1{0, 0, 0};  //ピンは適当
-// Motor motor2{1, 1, 1};
-// Motor motor3{2, 2, 2};
+// Motor motor1{0, 4, 0};  //ピンは適当
+// Motor motor2{16, 17, 1};
+// Motor motor3{5, 18, 2};
 
 // void lowerBodySetup() {
 //     motor1.setup();
