@@ -47,7 +47,7 @@ void loop() {
         int v2 = -vx / 2 - vy * sqrt(3) / 2;
         int v3 = vx;
         if (PS4LStickDistance > 70) {
-            printf("v1 = %d, v2 = %d, v3 = %d\n", v1, v2, v3);
+            Serial.printf("v1 = %d, v2 = %d, v3 = %d\n", v1, v2, v3);
             moterRun1(v1);
             moterRun2(v2);
             moterRun3(v3);
