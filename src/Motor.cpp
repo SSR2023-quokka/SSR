@@ -1,5 +1,7 @@
 #include "Motor.hpp"
 
+
+
 void Motor::setup() {
     AnalogOut analogMotor{dir, dirch, 20000, 8};
     DigitalOut digitalMotor{pwm};
