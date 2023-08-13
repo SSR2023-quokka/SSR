@@ -17,7 +17,9 @@ void setup() {
 }
 
 void loop() {
+    Serial.printf("1");
 if (PS4.isConnected()) {
+    Serial.printf("2");
     double degree = atan2(PS4.LStickY(), PS4.LStickX());
     double vx = cos(degree) * 32;
     double vy = sin(degree) * 32;
@@ -27,7 +29,7 @@ if (PS4.isConnected()) {
 
     double PS4LStickDistance = sqrt(pow(PS4.LStickX(), 2) + pow(PS4.LStickY(), 2));
     if (PS4LStickDistance > 70) {
-        printf("v1 = %d, v2 = %d, v3 = %d\n", v1, v2, v3);
+        Serial.printf("v1 = %d, v2 = %d, v3 = %d\n", v1, v2, v3);
         motor1.motorRun(v1);
         motor2.motorRun(v2);
         motor3.motorRun(v3);
@@ -38,4 +40,5 @@ if (PS4.isConnected()) {
         }
     // lowerBody();
     }
+    delay(1000);
 }
