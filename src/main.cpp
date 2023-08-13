@@ -31,11 +31,11 @@ if (PS4.isConnected()) {
         motor1.motorRun(v1);
         motor2.motorRun(v2);
         motor3.motorRun(v3);
-    } else {
+        } else {
         motor1.motorRun(0);
         motor2.motorRun(0);
         motor3.motorRun(0);
-    }
+        }
     // lowerBody();
-  }
+    }
 }
