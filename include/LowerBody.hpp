@@ -1,7 +1,7 @@
-// #include<Arduino.h>
-// #include <PS4Controller.h>
-// #include"Motor.hpp"
+#include<Arduino.h>
+#include <PS4Controller.h>
+#include"Motor.hpp"
 
-// void lowerBodySetup();
+void lowerBodySetup();
 
-// void lowerBody();
+void lowerBody();
