@@ -2,12 +2,9 @@
 
 #include <Arduino.h>
 #include "AnalogOut.hpp"
-#include "DigitalOut.hpp"
 
 struct Motor {
-    int pwm;
-    int dir;
-    int dirch;
+    AnalogOut dir;
 
     void setup();
     void motorRun(int v);
