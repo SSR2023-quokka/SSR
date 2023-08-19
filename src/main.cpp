@@ -1,78 +1,41 @@
 #include <PS4Controller.h>
-#include <PS4Operation.hpp>
-#include <AnalogOut.hpp>
-#include <DigitalOut.hpp>
+#include "Motor.hpp"
+// #include "LowerBody.hpp"
 
-int dir1;
-int pwm1;
-int dirch1 = 0;
-int dir2; 
-int pwm2;
-int dirch2 = 1;
-int dir3 = 4;
-int pwm3 = 0;
-int dirch3 = 2;
-
-AnalogOut Amoter1{dir1, dirch1, 20000, 8};
-AnalogOut Amoter2{dir2, dirch2, 20000, 8};
-AnalogOut Amoter3{dir3, dirch3, 20000, 8};
-DigitalOut Dmoter1{pwm1};
-DigitalOut Dmoter2{pwm2};
-DigitalOut Dmoter3{pwm3};
-
-void moterRun1(int v);
-void moterRun2(int v);
-void moterRun3(int v);
+Motor motor1{0, 4, 0};  //ピンは適当
+Motor motor2{16, 17, 1};
+Motor motor3{5, 18, 2};
 
 void setup() {
     Serial.begin(9600);
     PS4.begin("b8:d6:1a:bc:e6:a2");
     Serial.println("Ready.");
-
-    Amoter1.setup();
-    Amoter2.setup();
-    Amoter3.setup();
-    Dmoter1.setup();
-    Dmoter2.setup();
-    Dmoter3.setup();
+    motor1.setup();
+    motor2.setup();
+    motor3.setup();
+    // lowerBodySetup();
 }
 
 void loop() {
     if (PS4.isConnected()) {
-        double PS4LStickDistance = sqrt(pow(PS4.LStickX(), 2) + pow(PS4.LStickY(), 2));
-        double degree = atan2(PS4.LStickY(), PS4.LStickX());
-        double vx = cos(degree) * 32;
-        double vy = sin(degree) * 32;
-        int v1 = -vx / 2 + vy * sqrt(3) / 2;
-        int v2 = -vx / 2 - vy * sqrt(3) / 2;
-        int v3 = vx;
-        if (PS4LStickDistance > 70) {
-            Serial.printf("v1 = %d, v2 = %d, v3 = %d\n", v1, v2, v3);
-            moterRun1(v1);
-            moterRun2(v2);
-            moterRun3(v3);
+    double degree = atan2(PS4.LStickY(), PS4.LStickX());
+    double vx = cos(degree) * 32;
+    double vy = sin(degree) * 32;
+    int v1 = -vx / 2 + vy * sqrt(3) / 2;
+    int v2 = -vx / 2 - vy * sqrt(3) / 2;
+    int v3 = vx;
+
+    double PS4LStickDistance = sqrt(pow(PS4.LStickX(), 2) + pow(PS4.LStickY(), 2));
+    if (PS4LStickDistance > 70) {
+        // Serial.printf("v1 = %d, v2 = %d, v3 = %d\n", v1, v2, v3);
+        motor1.motorRun(v1);
+        motor2.motorRun(v2);
+        motor3.motorRun(v3);
         } else {
-            moterRun1(0);
-            moterRun2(0);
-            moterRun3(0);
+        motor1.motorRun(0);
+        motor2.motorRun(0);
+        motor3.motorRun(0);
         }
+    // lowerBody();
     }
-}
-
-void moterRun1(int v) {
-    int i = 128 - v;
-    digitalWrite(pwm3, HIGH);
-    ledcWrite(dirch3, i);
-}
-
-void moterRun2(int v) {
-    int i = 128 - v;
-    digitalWrite(pwm3, HIGH);
-    ledcWrite(dirch3, i);
-}
-
-void moterRun3(int v) {
-    int i = 128 - v;
-    digitalWrite(pwm3, HIGH);
-    ledcWrite(dirch3, i);
 }
