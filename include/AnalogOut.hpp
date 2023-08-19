@@ -9,4 +9,5 @@ struct AnalogOut {
     int resol_bits;
 
     void setup();
+    void write(int value);
 };

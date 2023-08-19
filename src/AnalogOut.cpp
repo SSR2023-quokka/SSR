@@ -5,3 +5,7 @@ void AnalogOut::setup() {
     ledcSetup(ch, freq, resol_bits);
     ledcAttachPin(pin, ch);
 }
+
+void AnalogOut::write(int value) {
+    ledcWrite(ch, value);
+}
