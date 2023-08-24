@@ -4,7 +4,7 @@ void Motor::setup() {
     dir.setup();
 }
 
-void Motor::motorRun(int v) {
-    int i = 128 - v;
-    dir.write(i);   
+void Motor::motorRun(int p) {
+    int i = 128 - p;
+    dir.write(i);
 }
