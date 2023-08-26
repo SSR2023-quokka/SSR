@@ -1,10 +1,13 @@
 #include "LineTracer.hpp"
 
-float LineTracer::calcDirFromSensor() {
-        //ここらへんが分からない
-        if (pin.read() > 800) {
-            return 1.0f;
-        } else {
-            return -1.0f;
+void LineTracer::lineTracerSetup() {
+    pin.setup();
+}
+
+bool LineTracer::calcDirFromSensor() {
+        if (pin.read() < 800) {     //白
+            return true;
+        } else {    //黒
+             return false;
         }
 }
