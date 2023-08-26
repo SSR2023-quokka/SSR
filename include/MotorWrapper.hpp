@@ -2,11 +2,12 @@
 
 #include <Arduino.h>
 #include "Motor.hpp"
+#include "FilterPower.hpp"
 
 struct MotorWrapper {
     Motor motor;
+    FilterPower FT;
 
     void motorWrapperSetup();
-    int filterPower(int p);
     void motorRun(int p);
 };
