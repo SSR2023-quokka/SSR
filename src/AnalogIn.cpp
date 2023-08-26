@@ -4,6 +4,6 @@ void AnalogIn::setup() {
     pinMode(pin, INPUT);
 }
 
-void AnalogIn::read() {
-    analogRead(pin);
+int AnalogIn::read() {
+    return analogRead(pin);
 }

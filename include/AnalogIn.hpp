@@ -6,5 +6,5 @@ struct AnalogIn {
     int pin;
 
     void setup();
-    void read();
+    int read();
 };
