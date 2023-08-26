@@ -7,6 +7,6 @@
 struct LineTracer {
     AnalogIn pin;
 
-    float calcDirFromSensor();
+    void lineTracerSetup();
+    bool calcDirFromSensor();
 };
-
