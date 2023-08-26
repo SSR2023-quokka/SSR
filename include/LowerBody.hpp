@@ -2,8 +2,13 @@
 
 #include <Arduino.h>
 #include <PS4Controller.h>
-#include "Motor.hpp"
+#include "MotorWrapper.hpp"
 
-void lowerBodySetup();
-
-void lowerBody();
+struct LowerBody {
+    MotorWrapper motor1;
+    MotorWrapper motor2;
+    MotorWrapper motor3;
+    
+    void lowerBodySetup();
+    void move(int v1, int v2, int v3);
+};
