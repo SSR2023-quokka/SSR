@@ -8,7 +8,7 @@ LineTracer lineTracer {39};
 LineTracer lineTracerRight {34};
 LineTracer lineTracerLeft {35};
 
-int i = 128; // 0 <= i <= 128
+int i = 64; // 0 <= i <= 128
 int j = 0;
 int k = 0;
 
@@ -47,7 +47,6 @@ void machineMoving() {
             if (lineTracer.calcDirFromSensor()) k = 1;
             while (k == 1) {
                 lowerBody.move(-64, -64, -64);
-                Serial.printf("q");
                 delay(1000);    //調整する
                 k = 0;
             }
