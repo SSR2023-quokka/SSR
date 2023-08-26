@@ -7,5 +7,6 @@ struct Motor {
     AnalogOut dir;
 
     void setup();
-    void motorRun(int v);
+    void motorRun(int p);
 };
+
