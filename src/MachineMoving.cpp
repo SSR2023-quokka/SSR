@@ -9,8 +9,8 @@ LineTracer lineTracerRight {34};
 LineTracer lineTracerLeft {35};
 
 int i = 64; // 0 <= i <= 128
-int j = 0;
-int k = 0;
+bool j = false;
+bool k = false;
 
 void machineMovingSetup() {
     lowerBody.lowerBodySetup();
@@ -35,8 +35,8 @@ void machineMoving() {
             lowerBody.move(0, 0, 0);
         }
 
-        if (PS4.Circle()) j = 1;    //〇ボタンを押したら自立モード
-        while (j == 1) {
+        if (PS4.Circle()) j = true;    //〇ボタンを押したら自立モード
+        while (j == true) {
             if (lineTracerRight.calcDirFromSensor()) {
                 lowerBody.move(50, -59, 8);     //少し右に進む
             } else if (lineTracerLeft.calcDirFromSensor()) {
@@ -44,12 +44,12 @@ void machineMoving() {
             } else {
                 lowerBody.move(55, -55, 0);     //直進
             }
-            if (lineTracer.calcDirFromSensor()) k = 1;
-            while (k == 1) {
-                lowerBody.move(-64, -64, -64);
+            if (lineTracer.calcDirFromSensor()) k = true;
+            while (k == true) {
+                lowerBody.move(-64, -64, -64);  //右回転
                 delay(1000);    //調整する
-                k = 0;
+                k = false;
             }
-            if (PS4.Cross()) j = 0; //×ボタン押したら自立モード終了
+            if (PS4.Cross()) j = false; //×ボタン押したら自立モード終了
         }
 }
