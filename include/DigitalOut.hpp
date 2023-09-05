@@ -6,4 +6,5 @@ struct DigitalOut {
     int pin;
 
     void setup();
+    void write(int i);
 };
