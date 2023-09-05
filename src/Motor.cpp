@@ -2,6 +2,8 @@
 
 void Motor::setup() {
     dir.setup();
+    pwm.setup();
+    pwm.write(HIGH);
 }
 
 void Motor::motorRun(int p) {
