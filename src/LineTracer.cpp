@@ -4,10 +4,10 @@ void LineTracer::lineTracerSetup() {
     pin.setup();
 }
 
-bool LineTracer::calcDirFromSensor() {
+bool LineTracer::detectLine() {
         if (pin.read() < 800) {     //白
             return true;
-        } else {    //黒
+        } else {    //白以外
              return false;
         }
 }
