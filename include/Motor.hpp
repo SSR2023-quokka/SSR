@@ -9,6 +9,6 @@ struct Motor {
     DigitalOut pwm;
 
     void setup();
-    void motorRun(int p);
+    void run(int p);
 };
 

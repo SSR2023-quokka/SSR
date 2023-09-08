@@ -6,7 +6,7 @@ void Motor::setup() {
     pwm.write(HIGH);
 }
 
-void Motor::motorRun(int p) {
+void Motor::run(int p) {
     int i = 128 - p;
     dir.write(i);
 }
