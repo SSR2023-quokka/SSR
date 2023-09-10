@@ -4,6 +4,6 @@ void DigitalOut::setup() {
     pinMode(pin, OUTPUT);
 }
 
-void DigitalOut::write(int i) {
-    digitalWrite(pin, i);
+void DigitalOut::write(int value) {
+    digitalWrite(pin, value);
 }
