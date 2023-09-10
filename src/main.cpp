@@ -1,6 +1,8 @@
+#include <Arduino.h>
 #include <PS4Controller.h>
 #include "MachineMoving.hpp"
 #include "Arm.hpp"
+#include "AnimalArm.hpp"
 
 void setup() {
     Serial.begin(9600);
@@ -8,12 +10,13 @@ void setup() {
     Serial.println("Ready.");
     machineMovingSetup();
     armSetup();
+    animalArmSetup();
 }
 
-void loop() {
+void loop() {   //割り込みをしていないので複数の動作を同時にできない（例）アームを開閉しながら移動をする
     if (PS4.isConnected()) {
         machineMoving();
         arm();
+        animalArm();
     }
 }
- 
