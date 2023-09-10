@@ -11,6 +11,6 @@ void ServoMotor::setup() {
     servo.attach(pin, 500, 2400);
 }
 
-void ServoMotor::servoWrite(int p) {
-    servo.write(p);
+void ServoMotor::write(int value) {
+    servo.write(value);
 }
