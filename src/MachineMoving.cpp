@@ -1,6 +1,6 @@
 #include "MachineMoving.hpp"
 
-LowerBody lowerBody{    //pwmch を0,1,2にするとうまく動かない...
+LowerBody lowerBody{    //pwmch を0,1,2 または 1,2,3 にするとうまく動かない...
     19,2,20000,8,18,0,
     17,3,20000,8,16,0,
      4,4,20000,8, 0,0,
@@ -30,20 +30,24 @@ void machineMoving() {
     int v2 = -v_x / 2 - v_y * sqrt(3) / 2 + v_theta;
     int v3 = v_x + v_theta;
 
-    if (PS4.R1() && PS4.L1()) v_theta = 0;
+    if (PS4.R1() && PS4.L1()) v_theta = 0;  //回転の操作
     else if (PS4.L1()) v_theta = 32;
     else if (PS4.R1()) v_theta = -32;
     else v_theta = 0;
 
-    float PS4LStickDistance = sqrt(pow(PS4.LStickX(), 2) + pow(PS4.LStickY(), 2));
+    float PS4LStickDistance = sqrt(pow(PS4.LStickX(), 2) + pow(PS4.LStickY(), 2));  //原点からの距離
     if (PS4LStickDistance > 70) {
         Serial.printf("v1 = %4d, v2 = %4d, v3 = %4d\n", v1, v2, v3);
         lowerBody.move(v1, v2, v3);
     } else {   
+        Serial.printf("v1 = %4d, v2 = %4d, v3 = %4d\n", v_theta, v_theta, v_theta);
         lowerBody.move(v_theta, v_theta, v_theta);
     }
 
-    if (PS4.Circle()) j = true; // 〇ボタンを押したら自立モード
+    if (PS4.Circle()) {
+        j = true; // 〇ボタンを押したら自立モード
+        Serial.printf("auto on\n");
+    }
     while (j == true) {
         if (lineTracerRight.detectLine()) {
             lowerBody.move(50, -59, 8); // 少し右に進む
@@ -58,6 +62,9 @@ void machineMoving() {
             delay(1000);                   // 調整する
             k = false;
         }
-        if (PS4.Cross()) j = false; // ×ボタン押したら自立モード終了
+        if (PS4.Cross()) {
+            j = false; // ×ボタン押したら自立モード終了
+            Serial.printf("auto off\n");
+        }
     }
 }
