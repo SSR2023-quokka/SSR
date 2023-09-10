@@ -9,5 +9,5 @@ struct MotorWrapper {
     FilterPower FT;
 
     void motorWrapperSetup();
-    void motorRun(int p);
+    void motorRun(int power);
 };
