@@ -8,5 +8,5 @@ struct ServoMotor{
     int pin;
 
     void setup();
-    void servoWrite(int p);
+    void write(int value);
 };
