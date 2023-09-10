@@ -4,7 +4,7 @@ void MotorWrapper::motorWrapperSetup() {
     motor.setup();
 }
 
-void MotorWrapper::motorRun(int p) {
+void MotorWrapper::motorRun(int power) {
     // motor.motorRun(FT.filterPower(p));　//フィルターパワーいらないかもね
-    motor.run(p);
+    motor.run(power);
 }
