@@ -1,16 +1,15 @@
 #include "FilterPower.hpp"
 
-int FilterPower::filterPower(int v) {
-    int distance = abs(v - x);
+int FilterPower::filterPower(int value) {   //vの値へと近づけていく
+    int distance = abs(value - result);
     if (distance < 100){
-        x = v;
+        result = value;
     } else {
-        if (v > x) {
-            x = x + distance / 10;
+        if (value > result) {
+            result = result + distance / 10;
         } else {
-            x = x - distance / 10;
+            result = result - distance / 10;
         }
     }
-    Serial.printf("%d\n",x);
-    return x;
+    return result;
 }
