@@ -3,7 +3,7 @@
 #include <Arduino.h>
 
 struct FilterPower {
-    int x;
+    int result;
 
     int filterPower(int v);
 };
