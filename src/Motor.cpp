@@ -7,6 +7,6 @@ void Motor::setup() {
 }
 
 void Motor::run(int p) {
-    int i = 128 - p;
+    int i = 128 - p;    //-128~128を0~256へ変換
     dir.write(i);
 }
