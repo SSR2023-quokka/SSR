@@ -13,7 +13,7 @@ LineTracer lineTracerLeft{35};
 int i = 96; // 0 <= i <= 128
 bool j = false;
 bool k = false;
-float v_theta = 0;
+int v_theta = 0;
 
 void machineMovingSetup() {
     lowerBody.lowerBodySetup();
