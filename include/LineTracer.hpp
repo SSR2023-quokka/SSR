@@ -7,6 +7,6 @@
 struct LineTracer {
     AnalogIn pin;
     
-    void lineTracerSetup();
+    void setup();
     bool detectLine();
 };
