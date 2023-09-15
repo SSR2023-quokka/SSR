@@ -6,7 +6,7 @@
 
 void setup() {
     Serial.begin(9600);
-    PS4.begin("b8:d6:1a:bc:e6:a2");
+    PS4.begin("E8:68:E7:30:C3:0A");
     Serial.println("Ready.");
     machineMovingSetup();
     armSetup();
