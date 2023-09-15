@@ -1,9 +1,9 @@
 #include "MachineMoving.hpp"
 
 LowerBody lowerBody{    //pwmch を0,1,2 または 1,2,3 にするとうまく動かない...
-    19,2,20000,8,18,0,
-    17,3,20000,8,16,0,
-     4,4,20000,8, 0,0,
+    19,7,20000,8,18,0,  //多分、サーボのpwmchに干渉するため、サーボの数だけchをずらす必要がある
+    17,8,20000,8,16,0,
+     4,9,20000,8, 0,0,
 };
 
 LineTracer lineTracer{39};
@@ -17,9 +17,9 @@ int v_theta = 0;
 
 void machineMovingSetup() {
     lowerBody.lowerBodySetup();
-    lineTracer.lineTracerSetup();
-    lineTracerRight.lineTracerSetup();
-    lineTracerLeft.lineTracerSetup();
+    lineTracer.setup();
+    lineTracerRight.setup();
+    lineTracerLeft.setup();
 }
 
 void machineMoving() {
@@ -57,7 +57,7 @@ void machineMoving() {
             lowerBody.move(55, -55, 0); // 直進
         }
         if (lineTracer.detectLine()) k = true;
-        while (k == true) {
+        if (k == true) {
             lowerBody.move(-64, -64, -64); // 右回転
             delay(1000);                   // 調整する
             k = false;
