@@ -1,6 +1,6 @@
 #include "LineTracer.hpp"
 
-void LineTracer::lineTracerSetup() {
+void LineTracer::setup() {
     pin.setup();
 }
 
