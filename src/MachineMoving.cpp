@@ -1,25 +1,25 @@
 #include "MachineMoving.hpp"
 
 LowerBody lowerBody{    //pwmch を0,1,2 または 1,2,3 にするとうまく動かない...
-    19,7,20000,8,18,0,  //多分、サーボのpwmchに干渉するため、サーボの数だけchをずらす必要がある
-    17,8,20000,8,16,0,
-     4,9,20000,8, 0,0,
+    18,5,20000,8,19,0,  //多分、サーボのpwmchに干渉するため、サーボの数だけchをずらす必要がある
+    16,6,20000,8,17,0,
+     0,7,20000,8, 4,0,
 };
 
-LineTracer lineTracer{39};
-LineTracer lineTracerRight{34};
-LineTracer lineTracerLeft{35};
+// LineTracer lineTracer{39};
+// LineTracer lineTracerRight{34};
+// LineTracer lineTracerLeft{35};
 
-int i = 96; // 0 <= i <= 128
+int i = 48; // 0 <= i <= 128
 bool j = false;
-bool k = false;
+int k = 0;
 int v_theta = 0;
 
 void machineMovingSetup() {
     lowerBody.lowerBodySetup();
-    lineTracer.setup();
-    lineTracerRight.setup();
-    lineTracerLeft.setup();
+    // lineTracer.setup();
+    // lineTracerRight.setup();
+    // lineTracerLeft.setup();
 }
 
 void machineMoving() {
@@ -44,27 +44,40 @@ void machineMoving() {
         lowerBody.move(v_theta, v_theta, v_theta);
     }
 
-    if (PS4.Circle()) {
-        j = true; // 〇ボタンを押したら自立モード
-        Serial.printf("auto on\n");
-    }
-    while (j == true) {
-        if (lineTracerRight.detectLine()) {
-            lowerBody.move(50, -59, 8); // 少し右に進む
-        } else if (lineTracerLeft.detectLine()) {
-            lowerBody.move(59, -50, -8); // 少し左に進む
-        } else {
-            lowerBody.move(55, -55, 0); // 直進
-        }
-        if (lineTracer.detectLine()) k = true;
-        if (k == true) {
-            lowerBody.move(-64, -64, -64); // 右回転
-            delay(1000);                   // 調整する
-            k = false;
-        }
-        if (PS4.Cross()) {
-            j = false; // ×ボタン押したら自立モード終了
-            Serial.printf("auto off\n");
-        }
-    }
+    // if (PS4.Circle()) {
+    //     j = true; // 〇ボタンを押したら自立モード
+    //     Serial.printf("auto on\n");
+    // }
+    // while (j == true) {
+    //     if (lineTracerRight.detectLine()) {
+    //         lowerBody.move(25, -29, 4); // 少し右に進む
+    //     } else if (lineTracerLeft.detectLine()) {
+    //         lowerBody.move(29, -25, -4); // 少し左に進む
+    //     } else {
+    //         lowerBody.move(27, -27, 0); // 直進
+    //     }
+    //     if (lineTracer.detectLine()) k = k + 1;
+    //     if (k == 2 || k == 3) {
+    //         lowerBody.move(-32, -32, -32); // 右回転
+    //         delay(2000);                   // 調整する
+    //     }
+    //     if (PS4.Cross()) {
+    //         j = false; // ×ボタン押したら自立モード終了
+    //         Serial.printf("auto off\n");
+    //     }
+    // // }
+
+    // if (PS4.Circle()) {
+    //     j = true; // 〇ボタンを押したら自立モード
+    //     Serial.printf("auto on\n");
+    // }
+    // if (j == true) {
+    //         lowerBody.move(27, -27, 0); // 直進
+    //         delay(2000);
+    //         lowerBody.move(-32, -32, -32); // 右回転
+    //         delay(2000);                   // 調整する
+    //         j = false; // ×ボタン押したら自立モード終了
+    // }
+
+
 }
